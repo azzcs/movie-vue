@@ -52,7 +52,7 @@
           </li>
         </ul>
       </div>
-      <div class="film-content-movie">
+      <div class="film-content-movie-p">
         <ul id="tvList">
           <li
             v-for="(item,index) in tvList"
@@ -60,8 +60,8 @@
           >
             <router-link :to="{path:'/p/detail', query: {id:item.Id}}">
               <img :src="item.Img">
-              <span class="film-name-content-movie">{{item.Name}}</span>
-              <span class="film-status-content-movie">{{item.UpdateStatus}}</span>
+              <span class="film-name-content-movie-p">{{item.Name}}</span>
+              <span class="film-status-content-movie-p">{{item.UpdateStatus}}</span>
             </router-link>
           </li>
         </ul>
@@ -123,7 +123,7 @@
           </li>
         </ul>
       </div>
-      <div class="film-content-movie">
+      <div class="film-content-movie-p">
         <ul id="filmList">
           <li
             v-for="(item,index) in filmList"
@@ -131,8 +131,8 @@
           >
             <router-link :to="{path:'/p/detail', query: {id:item.Id}}">
               <img :src="item.Img">
-              <span class="film-name-content-movie">{{item.Name}}</span>
-              <span class="film-status-content-movie">{{item.UpdateStatus}}</span>
+              <span class="film-name-content-movie-p">{{item.Name}}</span>
+              <span class="film-status-content-movie-p">{{item.UpdateStatus}}</span>
             </router-link>
           </li>
         </ul>
@@ -145,7 +145,7 @@
           更多&nbsp·&nbsp·&nbsp·
         </router-link>
       </div>
-      <div class="film-content-movie">
+      <div class="film-content-movie-p">
         <ul id="varietyList">
           <li
             v-for="(item,index) in varietyList"
@@ -153,8 +153,8 @@
           >
             <router-link :to="{path:'/p/detail', query: {id:item.Id}}">
               <img :src="item.Img">
-              <span class="film-name-content-movie">{{item.Name}}</span>
-              <span class="film-status-content-movie">{{item.UpdateStatus}}</span>
+              <span class="film-name-content-movie-p">{{item.Name}}</span>
+              <span class="film-status-content-movie-p">{{item.UpdateStatus}}</span>
             </router-link>
           </li>
         </ul>
@@ -167,7 +167,7 @@
           更多&nbsp·&nbsp·&nbsp·
         </router-link>
       </div>
-      <div class="film-content-movie">
+      <div class="film-content-movie-p">
         <ul id="cartoonList">
           <li
             v-for="(item,index) in cartoonList"
@@ -176,8 +176,8 @@
             <!--            <a href="'/p/detail'">-->
             <router-link :to="{path:'/p/detail', query: {id:item.Id}}">
               <img :src="item.Img">
-              <span class="film-name-content-movie">{{item.Name}}</span>
-              <span class="film-status-content-movie">{{item.UpdateStatus}}</span>
+              <span class="film-name-content-movie-p">{{item.Name}}</span>
+              <span class="film-status-content-movie-p">{{item.UpdateStatus}}</span>
             </router-link>
             <!--            </a>-->
           </li>

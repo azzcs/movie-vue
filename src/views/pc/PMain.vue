@@ -1,11 +1,11 @@
 <template>
   <div>
     <PHeader />
-     <div class="movie-all">
-    <div class="movie-left">
+     <div class="movie-all-p">
+    <div class="movie-left-p">
        <router-view />
     </div>
-    <div class="movie-right">
+    <div class="movie-right-p">
       <PRight/>
     </div>
   </div>
@@ -30,16 +30,16 @@ export default {
 };
 </script>
 <style >
-.movie-all{
+.movie-all-p{
   overflow: hidden;
   width: 1200px;
   margin: 0 auto;
 }
-.movie-left{
+.movie-left-p{
   float: left;
   width: 840px;
 }
-.movie-right{
+.movie-right-p{
   float: right;
   width: 360px;
 }
@@ -61,25 +61,25 @@ a {
     text-decoration: none;
 }
 
-.film-content-movie{
+.film-content-movie-p{
     overflow: hidden;
     /*color: #999;*/
     margin-top: 5px;
 
 }
-.film-content-movie li{
+.film-content-movie-p li{
     float: left;
     width: 166px;
     height: 230px;
     text-align: center;
     position: relative;
 }
-.film-content-movie img{
+.film-content-movie-p img{
     width: 96%;
     height: 200px;
 }
 
-.film-name-content-movie {
+.film-name-content-movie-p {
     position: absolute;
     left: 0;
     bottom: 10px;
@@ -89,7 +89,7 @@ a {
     height: 20px;
     overflow: hidden;
 }
-.film-status-content-movie {
+.film-status-content-movie-p {
     position: absolute;
     right:2%;
     top: 0;

@@ -10,7 +10,7 @@
           <img src="../../assets/img/cartoon.png" />动漫
           <a href="/search?nav1=动漫片">更多&nbsp·&nbsp·&nbsp·</a>
         </div> -->
-        <div class="film-content-movie">
+        <div class="film-content-movie-m">
           <ul id="list">
             <li
               v-for="(item,index) in list"
@@ -18,8 +18,8 @@
             >
               <router-link :to="{path:'/m/detail', query: {id:item.Id}}">
                 <img :src="item.Img">
-                <span class="film-name-content-movie">{{item.Name}}</span>
-                <span class="film-status-content-movie">{{item.UpdateStatus}}</span>
+                <span class="film-name-content-movie-m">{{item.Name}}</span>
+                <span class="film-status-content-movie-m">{{item.UpdateStatus}}</span>
               </router-link>
             </li>
           </ul>

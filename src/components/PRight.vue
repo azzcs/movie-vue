@@ -10,7 +10,7 @@
           v-bind:key="'right'+index"
           class="right-movie-li"
         >
-          <router-link :to="{path:'/p/detail', query: {id:item.Id}}">
+          <router-link :to="{path:'/p/detail', query: {id:item.Id}}" @click.native="reload()">
             <h4>{{item.Name}}</h4>
             <p>{{item.UpdateStatus}}</p>
           </router-link>
@@ -36,7 +36,12 @@ export default {
       .catch(res => {
         console.log(res);
       });
-  }
+  },
+  methods: {
+    reload() {
+        window.location.reload();
+    }
+   }
 };
 </script>
 

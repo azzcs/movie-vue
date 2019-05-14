@@ -4,7 +4,7 @@
       class="module-movie"
       v-bind:style="{'min-height': scrollerHeight + 'px' }"
     >
-      <div class="film-content-movie">
+      <div class="film-content-movie-p">
         <ul id="list">
           <li
             v-for="(item,index) in list"
@@ -12,8 +12,8 @@
           >
             <router-link :to="{path:'/p/detail', query: {id:item.Id}}">
               <img :src="item.Img">
-              <span class="film-name-content-movie">{{item.Name}}</span>
-              <span class="film-status-content-movie">{{item.UpdateStatus}}</span>
+              <span class="film-name-content-movie-p">{{item.Name}}</span>
+              <span class="film-status-content-movie-p">{{item.UpdateStatus}}</span>
             </router-link>
           </li>
         </ul>

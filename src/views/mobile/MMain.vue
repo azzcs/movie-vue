@@ -37,25 +37,25 @@ a {
     text-decoration: none;
 }
 
-.film-content-movie{
+.film-content-movie-m{
     overflow: hidden;
     /*color: #999;*/
     margin-top: 5px;
 
 }
-.film-content-movie li{
+.film-content-movie-m li{
     float: left;
     width: 33.3%;
     height: 180px;
     text-align: center;
     position: relative;
 }
-.film-content-movie img{
+.film-content-movie-m img{
     width: 96%;
     height: 150px;
 }
 
-.film-name-content-movie {
+.film-name-content-movie-m {
     position: absolute;
     left: 0;
     bottom: 10px;
@@ -65,7 +65,7 @@ a {
     height: 20px;
     overflow: hidden;
 }
-.film-status-content-movie {
+.film-status-content-movie-m {
     position: absolute;
     right:2%;
     top: 0;
