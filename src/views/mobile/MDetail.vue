@@ -162,7 +162,8 @@ export default {
       .get(url)
       .then(res => {
         this.movie = res.data;
-        document.getElementsByTagName('title')[0].innerText="123视频-"+res.data.Name
+        console.log(document.getElementsByTagName('title'))
+        document.getElementsByTagName('title')[0].innerHTML=res.data.Name+"-123视频"
         this.kuyun = res.data.MovieContent.kuyun;
         this.ckm3u8 = res.data.MovieContent.ckm3u8;
       })
@@ -198,6 +199,7 @@ export default {
       return false;
     },
     play(url,index) {
+      document.getElementsByTagName('title')[0].innerHTML=this.movie.Name+"-"+url.split("$")[0]+"-123视频"
       this.currentIndex = index
       var playUrl = url.split("$")[1];
       if (this.$options.methods.confirmEnding(playUrl, "m3u8")) {
