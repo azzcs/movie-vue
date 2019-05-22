@@ -57,7 +57,7 @@
             v-for="(item,index) in tvList"
             v-bind:key="'tv'+index"
           >
-            <router-link :to="{path:'/m/detail', query: {id:item.Id}}">
+            <router-link :to="{path:'/m/detail', query: {id:item.Id,index:0,tabs:'ckm3u8'}}">
               <img :src="item.Img">
               <span class="film-name-content-movie-m">{{item.Name}}</span>
               <span class="film-status-content-movie-m">{{item.UpdateStatus}}</span>
@@ -128,7 +128,7 @@
             v-for="(item,index) in filmList"
             v-bind:key="'film'+index"
           >
-            <router-link :to="{path:'/m/detail', query: {id:item.Id}}">
+            <router-link :to="{path:'/m/detail', query: {id:item.Id,index:0,tabs:'ckm3u8'}}">
               <img :src="item.Img">
               <span class="film-name-content-movie-m">{{item.Name}}</span>
               <span class="film-status-content-movie-m">{{item.UpdateStatus}}</span>
@@ -150,7 +150,7 @@
             v-for="(item,index) in varietyList"
             v-bind:key="'variety'+index"
           >
-            <router-link :to="{path:'/m/detail', query: {id:item.Id}}">
+            <router-link :to="{path:'/m/detail', query: {id:item.Id,index:0,tabs:'ckm3u8'}}">
               <img :src="item.Img">
               <span class="film-name-content-movie-m">{{item.Name}}</span>
               <span class="film-status-content-movie-m">{{item.UpdateStatus}}</span>
@@ -173,7 +173,7 @@
             v-bind:key="'cartoon'+index"
           >
             <!--            <a href="'/m/detail'">-->
-            <router-link :to="{path:'/m/detail', query: {id:item.Id}}">
+            <router-link :to="{path:'/m/detail', query: {id:item.Id,index:0,tabs:'ckm3u8'}}">
               <img :src="item.Img">
               <span class="film-name-content-movie-m">{{item.Name}}</span>
               <span class="film-status-content-movie-m">{{item.UpdateStatus}}</span>

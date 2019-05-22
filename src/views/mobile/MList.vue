@@ -16,7 +16,7 @@
               v-for="(item,index) in list"
               v-bind:key="'list'+index"
             >
-              <router-link :to="{path:'/m/detail', query: {id:item.Id}}">
+              <router-link :to="{path:'/m/detail', query: {id:item.Id,index:0,tabs:'ckm3u8'}}">
                 <img :src="item.Img">
                 <span class="film-name-content-movie-m">{{item.Name}}</span>
                 <span class="film-status-content-movie-m">{{item.UpdateStatus}}</span>
@@ -48,6 +48,7 @@ export default {
   mounted() {
     this.list = [],
     this.scrollerHeight= document.documentElement.clientHeight-50;//默认值
+    window.scrollTo(0,0);
   },
   methods: {
     getData(pageNum, done) {

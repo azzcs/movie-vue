@@ -43,7 +43,7 @@
           scrolling="no"
           allowfullscreen="true"
           allowtransparency="false"
-          :src="playUrl"
+          :src="playUrlKuyun"
           style="width: 100%;height: 200px;"
         >
         </iframe>
@@ -75,10 +75,10 @@
         name="introduce"
         v-on:click="tabs='introduce'"
       >介绍</button>
-      <img
+      <!-- <img
         v-on:click="reverse()"
         src="../../assets/img/sort.png"
-      />
+      /> -->
       <div
         id="m3u8"
         class="detail-introduce-movie"
@@ -89,7 +89,9 @@
             v-for="(item,index) in ckm3u8"
             v-bind:key="'ckm3u8'+index"
           >
-            <button v-on:click="play(item,index)" v-bind:class="{ 'num-active': index==currentIndex }">{{getName(item)}}</button>
+          <router-link :to="{path:'/m/detail', query: {id:id,index:index,tabs:'ckm3u8'}} " @click.native="reload()">
+            <button v-bind:class="{ 'num-active': item==playUrl  }">{{getName(item)}}</button>
+             </router-link>
           </li>
         </ul>
       </div>
@@ -103,7 +105,9 @@
             v-for="(item,index) in kuyun"
             v-bind:key="'kuyun'+index"
           >
-            <button v-on:click="play(item,index)" v-bind:class="{ 'num-active': index==currentIndex }">{{getName(item)}}</button>
+          <router-link :to="{path:'/m/detail', query: {id:id,index:index,tabs:'kuyun'}}" @click.native="reload()">
+            <button v-bind:class="{ 'num-active': item==playUrl  }">{{getName(item)}}</button>
+             </router-link>
           </li>
         </ul>
       </div>
@@ -129,10 +133,11 @@ export default {
       movie: {},
       kuyun: [],
       ckm3u8: [],
-      tabs: "ckm3u8",
+      tabs: "",
       playDiv: "",
       playUrl: "",
-      currentIndex: -1,
+      id:"",
+      playUrlKuyun:"",
       kuyunLoading: true,
       playerOptions: {
         playsinline: true,
@@ -157,19 +162,36 @@ export default {
     };
   },
   created: function() {
+    var index = this.$route.query.index//播放下标
+    var tabs = this.$route.query.tabs//播放类型
+    this.tabs = tabs;
+    this.playDiv = tabs;
     var url = this.apiPath + "/api/movie/" + this.$route.query.id;
     this.axios
       .get(url)
       .then(res => {
         this.movie = res.data;
-        console.log(document.getElementsByTagName('title'))
-        document.getElementsByTagName('title')[0].innerHTML=res.data.Name+"-123视频"
         this.kuyun = res.data.MovieContent.kuyun;
         this.ckm3u8 = res.data.MovieContent.ckm3u8;
+        var playUrl = ""
+        if (tabs=="ckm3u8") {
+          playUrl= this.ckm3u8[index];
+          this.playerOptions.sources[0].src = playUrl.split("$")[1];
+        }else{
+          playUrl= this.kuyun[index];
+          this.kuyunLoading = true;
+          this.playUrlKuyun = playUrl.split("$")[1]
+          this.playerOptions.sources[0].src = "index.m3u8";
+        }
+        document.getElementsByTagName('title')[0].innerHTML="123视频-"+res.data.Name+"-"+playUrl.split("$")[0]
+        this.playerOptions.sources[0].src = playUrl.split("$")[1];
+        this.playUrl = playUrl;
+        this.id = this.movie.Id
       })
       .catch(res => {
         console.log(res);
       });
+      window.scrollTo(0,0);
   },
   computed: {
     player() {
@@ -190,29 +212,32 @@ export default {
     getName(url) {
       return url.split("$")[0];
     },
-    confirmEnding(str, target) {
-      var start = str.length - target.length;
-      var arr = str.substr(start, target.length);
-      if (arr === target) {
-        return true;
-      }
-      return false;
-    },
-    play(url,index) {
-      document.getElementsByTagName('title')[0].innerHTML=this.movie.Name+"-"+url.split("$")[0]+"-123视频"
-      this.currentIndex = index
-      var playUrl = url.split("$")[1];
-      if (this.$options.methods.confirmEnding(playUrl, "m3u8")) {
-        this.playDiv = "ckm3u8";
-        this.playUrl = "kuyun";
-        this.playerOptions.sources[0].src = playUrl;
-      } else {
-        this.kuyunLoading = true;
-        this.playDiv = "kuyun";
-        this.playUrl = playUrl;
-        this.playerOptions.sources[0].src = "index.m3u8";
-      }
-      console.log(this.currentIndex)
+    // confirmEnding(str, target) {
+    //   var start = str.length - target.length;
+    //   var arr = str.substr(start, target.length);
+    //   if (arr === target) {
+    //     return true;
+    //   }
+    //   return false;
+    // },
+    // play(url,index) {
+    //   document.getElementsByTagName('title')[0].innerHTML=this.movie.Name+"-"+url.split("$")[0]+"-123视频"
+    //   this.currentIndex = index
+    //   var playUrl = url.split("$")[1];
+    //   if (this.$options.methods.confirmEnding(playUrl, "m3u8")) {
+    //     this.playDiv = "ckm3u8";
+    //     this.playUrl = "kuyun";
+    //     this.playerOptions.sources[0].src = playUrl;
+    //   } else {
+    //     this.kuyunLoading = true;
+    //     this.playDiv = "kuyun";
+    //     this.playUrl = playUrl;
+    //     this.playerOptions.sources[0].src = "index.m3u8";
+    //   }
+    //   console.log(this.currentIndex)
+    // },
+     reload() {
+        window.location.reload();
     }
   }
 };
